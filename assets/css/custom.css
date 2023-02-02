@@ -1,9 +1,11 @@
 .jumbotron {
+    display:flex;
     height: 800px;
     background-image: url(../images/header1.jpg);
     background-size: cover;
 }
-.container{
+
+.container {
     padding: 0 30px;
     margin:0;
 }
