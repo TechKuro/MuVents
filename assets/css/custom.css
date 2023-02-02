@@ -1,0 +1,5 @@
+.jumbotron {
+    height: 800px;
+    background-image: url(../images/header1.jpg);
+    background-size: cover;
+}
