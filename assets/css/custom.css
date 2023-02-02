@@ -3,3 +3,16 @@
     background-image: url(../images/header1.jpg);
     background-size: cover;
 }
+.container{
+    padding: 0 30px;
+    margin:0;
+}
+.form-inline {
+    margin: 0 auto;
+}
+
+.test2 {
+    margin:0;
+    padding:0;
+    width:100%
+}
