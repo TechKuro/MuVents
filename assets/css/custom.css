@@ -28,27 +28,3 @@
     padding: 0;
     width: 100%
 }
-
-.button {
-    justify-content: flex-end;
-    display: flex;
-
-
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group button[type="submit"] {
-    margin-left: auto;
-    align-self: center;
-  }
-  
-  .btn-primary {
-    align-items: center;
-    justify-content: center;
-    display: flex;
-  }
-  
