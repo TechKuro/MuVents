@@ -3,41 +3,33 @@
     height: 800px;
     background-image: url(../images/header1.jpg);
     background-size: cover;
-  }
-  
-  .test1 {
+    display: flex;
+}
+
+.test1 {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     max-width: 40%;
     color: white;
-  }
-  
-  .container {
+}
+
+.container {
     padding: 0 30px;
     margin: 0;
-  }
-  
-  .test2 {
+}
+
+.form-inline {
+    margin: 0 auto;
+}
+
+.test2 {
     margin: 0;
     padding: 0;
-    width: 100%;
-    text-align: center;
-  }
-  
-  .form-group {
+    width: 100%
+}
+
+.btn {
     display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group button[type="submit"] {
-    margin-left: auto;
-    align-self: center;
-  }
-  
-  .btn-primary {
-    align-items: center;
-    justify-content: center;
-    display: flex;
-  }
-  
+    align-items: flex-end;
+}
