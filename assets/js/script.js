@@ -42,6 +42,7 @@ $.ajax({
         }
 
         $('#event-row').append(`
+        
             <div class="card" style="width: 500px;">
                 <div class="row no-gutters">
                     <div class="col-sm-5">
@@ -63,6 +64,7 @@ $.ajax({
                     </div>
                 </div>
             </div>
+            
       `)
         // $(`.eventImage${i + 1}`).attr("src", eventImage);
         // $(`.eventLink${i + 1}`).attr("href", ticketMasterURL);
