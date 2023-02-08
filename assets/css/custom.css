@@ -29,7 +29,7 @@
     width: 100%
 }
 
-.btn {
-    display: flex;
-    align-items: flex-end;
+.card {
+    position: absolute;
+    right: 0;
 }
