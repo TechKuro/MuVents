@@ -32,4 +32,6 @@
 .card {
     display: flex;
     justify-content: right;
+    width: 800px;
+    margin-left: 200px;
 }
