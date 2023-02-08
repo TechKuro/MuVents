@@ -17,19 +17,23 @@
 
 const apiKey = 'r8DA5FmL3xv8O9dO4K6WpafEvzCNG3Fv';
 
-const userInput = $("#search").val();
-const userOption = $("#options").val();
-const userDate = $("#calendar").val();
-
-$.ajax({
-    method: "GET",
-    url: `https://app.ticketmaster.com/discovery/v2/events.json?&size=3&apikey=${apiKey}&keyword=${userInput}&city=Leicester&locale=en-gb`,
-    async: true,
-    dataType: "json",
-}).then(function (response) {
-    console.log(response);
-
-    for (let i = 0; i < 3; i++) {
+$("form").submit(function(e) {
+    e.preventDefault(); // prevent form from submitting and refreshing the page
+  
+    // Get the user input
+    const userInput = $("#search").val();
+    const userOption = $("#options").val();
+    const userDate = $("#calendar").val();
+  
+    $.ajax({
+      method: "GET",
+      url:`https://app.ticketmaster.com/discovery/v2/events.json?&size=3&apikey=${apiKey}&keyword=${userInput}`,
+      async: true,
+      dataType: "json",
+    }).then(function(response) {
+      console.log(response);
+  
+      for (let i = 0; i < 3; i++) {
         const eventImage = response._embedded.events[i].images[0].url;
         const eventName = response._embedded.events[i].name;
         const ticketMasterURL = response._embedded.events[i].url;
@@ -75,6 +79,29 @@ $.ajax({
         // let eventInfo = $(`<p class="text-center actName eventName">`).text(eventName);
         // $(`.events${i + 1}`).append(eventInfo);
     }
+    });
+  });
 
-
-});
+  function getJoke() {
+    $.ajax({
+      url: 'https://api.chucknorris.io/jokes/random',
+      type: 'GET',
+      success: function(response) {
+        const card = `
+          <div class="card text-center">
+            <div class="card-body">
+              <p class="card-text">${response.value}</p>
+            </div>
+          </div>
+        `;
+        $('body').append(card);
+      },
+      error: function() {
+        console.error('Error retrieving joke');
+      }
+    });
+  }
+  
+  $(document).ready(function() {
+    getJoke();
+  });
