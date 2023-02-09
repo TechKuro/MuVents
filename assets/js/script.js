@@ -1,9 +1,7 @@
 
-
-
 const apiKey = 'r8DA5FmL3xv8O9dO4K6WpafEvzCNG3Fv';
 
-$("form").submit(function (e) {
+$('#search-button').on('click', function (e) {
     e.preventDefault(); // prevent form from submitting and refreshing the page
 
     // Get the user input
@@ -11,18 +9,17 @@ $("form").submit(function (e) {
     const userInput = $("#search").val();
     const userOption = $("#options").val();
     const userDate = $("#calendar").val();
-
-    
+    const size = 6;
 
     $.ajax({
         method: "GET",
-        url: `https://app.ticketmaster.com/discovery/v2/events.json?&size=3&apikey=${apiKey}&keyword=${userInput}&start=0&rows=3`,
+        url: `https://app.ticketmaster.com/discovery/v2/events.json?&size=6&apikey=${apiKey}&keyword=${userInput}`,
         async: true,
         dataType: "json",
     }).then(function (response) {
         console.log(response);
 
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 6; i++) {
             const eventImage = response._embedded.events[i].images[1].url;
             const eventName = response._embedded.events[i].name;
             const ticketMasterURL = response._embedded.events[i].url;
@@ -38,7 +35,7 @@ $("form").submit(function (e) {
                 country: address_path.country.name,
             }
 
-            $('#event-row').append(`
+            $('.event-row').append(`
         
             <div class="card border-secondary mb-3" style="width: 540px;">
                 <div class="row no-gutters">
@@ -90,3 +87,4 @@ function getJoke() {
 $(document).ready(function () {
     getJoke();
 });
+

@@ -14,53 +14,39 @@
 
 <body>
 
+    <div class="mb-3 container-fluid" id="main">
+        <nav class="navbar navbar-dark bg-light">
+            <a class="navbar-brand">Muvents</a>
+            <form class="form-inline">
+                <input id="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button id="search-button" class="btn btn-outline-success my-2 my-sm-0" type="submit">GO</button>
+            </form>
+        </nav>
+        <!--- jumbotron --->
+        <div class="jumbotron jumbotron-fluid text-white">
+            <div class="container">
+                <h1 class="display-4">Welcome, you</h1>
+                <!-- <hr style="color: white;" class="my-4"> -->
+                <p class="lead">This state of the art web application gives you access to upcoming music events near you
+                    and around the globe.</p>
+                <a class="btn btn-primary" href="#" role="button">Learn More</a>
+            </div>
+        </div>
+        <!---->
+    </div>
 
-    <!--- jumbotron --->
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container test1 text-center flex-column"> <!---text box within hero image-->
-            <p class="w-100">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis sequi neque doloribus
-                exercitationem tempora qui? Possimus cum amet non, veniam ullam earum nam, et fuga deleniti ea
-                asperiores debitis accusantium!</p>
-            <p class="w-100">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis sequi neque doloribus
-                exercitationem tempora qui? Possimus cum amet non, veniam ullam earum nam, et fuga deleniti ea
-                asperiores debitis accusantium!</p>
-            <p class="w-100">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis sequi neque doloribus
-                exercitationem tempora qui? Possimus cum amet non, veniam ullam earum nam, et fuga deleniti ea
-                asperiores debitis accusantium!</p>
-            <p class="w-100">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis sequi neque doloribus
-                exercitationem tempora qui? Possimus cum amet non, veniam ullam earum nam, et fuga deleniti ea
-                asperiores debitis accusantium!</p>
-            <button class="btn btn-secondary" type="button">Click Me!</button>
+    <div class="container-fluid" id="event-main"> <!--main page container-->
+        <div class="col-md-6 container"> <!--second right col-->
+            <div class="row event-row">
+
+            </div>
+        </div>
+        <div class="col-md-6 container"> <!--second right col-->
+            <div class="row event-row">
+
+            </div>
         </div>
     </div>
-    <!---->
-    <div class="container"> <!--main page container-->
-        <div class="d-flex flex-row">
-            <div class="col-md-6"> <!--First left col-->
-                <form action="" class="form-group">
-                    <div class="form-group mb-2 d-flex">
-                        <input type="text" id="search" class="form-control form-control-lg" placeholder="Search...">
-                    </div>
-                    <div class="form-group d-flex mb-2">
-                        <select class="form-control form-control-lg" id="options">
-                            <option value="Reggae">Reggae</option>
-                            <option value="Rock">Rock</option>
-                            <option value="Jazz">Jazz</option>
-                        </select>
-                    </div>
-                    <div class="form-group d-flex mb-2">
-                        <input type="date" id="calendar" class="form-control form-control-lg">
-                    </div>
-                    <button type="submit" class="form-control btn btn-primary btn-block col-4 test2">Submit</button>
-                </form>
-            </div>
-            <div class="col-md-6 container"> <!--second right col-->
-                <div class="row" id="event-row">
-                    
-                </div>
-            </div>
-
-        </div>
     </div>
 
 
