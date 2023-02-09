@@ -28,5 +28,10 @@
 
 #event-main{
     display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+.card{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}

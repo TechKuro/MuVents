@@ -1,26 +1,18 @@
 
 const apiKey = 'r8DA5FmL3xv8O9dO4K6WpafEvzCNG3Fv';
 
-$('#search-button').on('click', function (e) {
-    e.preventDefault(); // prevent form from submitting and refreshing the page
-
-    // Get the user input
-    $('#event-row').empty();
-    const userInput = $("#search").val();
-    const userOption = $("#options").val();
-    const userDate = $("#calendar").val();
-    const size = 6;
-
+function getEventData(url){
+    $('.event-row').empty();
     $.ajax({
         method: "GET",
-        url: `https://app.ticketmaster.com/discovery/v2/events.json?&size=6&apikey=${apiKey}&keyword=${userInput}`,
+        url: url,
         async: true,
         dataType: "json",
     }).then(function (response) {
         console.log(response);
 
         for (let i = 0; i < 6; i++) {
-            const eventImage = response._embedded.events[i].images[1].url;
+            const eventImage = response._embedded.events[i].images[0].url;
             const eventName = response._embedded.events[i].name;
             const ticketMasterURL = response._embedded.events[i].url;
             const eventDate = response._embedded.events[i].dates.start.localDate;
@@ -36,33 +28,61 @@ $('#search-button').on('click', function (e) {
             }
 
             $('.event-row').append(`
-        
-            <div class="card border-secondary mb-3" style="width: 540px;">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img style="height: 100%;" class="card-img" src="${eventImage}" alt="Event Image">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">${eventName}</h5>
-                            <p class="card-text">Date and Time: ${eventDate}, ${eventTime}</p>
-                            <address class="text-muted">
-                                Venue:<br>
-                                ${venue_address.name}<br>
-                                ${venue_address.address}<br>
-                                ${venue_address.post_code}<br>
-                                ${venue_address.city}, ${venue_address.country}
-                            </address>
-                            <a href="${ticketMasterURL}" target="_blank" class="btn btn-primary">Get Tickets</a>
+            <div class="col-md-6 col-sm-12">
+                <div class="card border-secondary mb-3" style="max-width: 420px;">
+                    <div class="row no-gutters">
+                        <div class="col-md-5">
+                            <img style="height: 100%;" class="card-img" src="${eventImage}" alt="Event Image">
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card-body">
+                                <h5 class="card-title">${eventName}</h5>
+                                <p class="card-text">Date and Time: ${eventDate}, ${eventTime}</p>
+                                <address class="text-muted">
+                                    Venue:<br>
+                                    ${venue_address.name}<br>
+                                    ${venue_address.address}<br>
+                                    ${venue_address.post_code}<br>
+                                    ${venue_address.city}, ${venue_address.country}
+                                </address>
+                                <a href="${ticketMasterURL}" target="_blank" class="btn btn-primary">Get Tickets</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
       `)
+       $('#pagination-div').empty();
+       $('#pagination-div').append(`
+       <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" data-href="${response._links.first.href}" href="#">First</a></li>
+            <li class="page-item ${response._links.prev ?"" : "disabled"}"><a class="page-link" data-href="${response._links.prev ? response._links.prev.href : ""}" href="#">Previous</a></li>
+            <li class="page-item ${response._links.next ?"" : "disabled"}"><a class="page-link" data-href="${response._links.next ? response._links.next.href : ""}" href="#">Next</a></li>
+            <li class="page-item"><a class="page-link" data-href="${response._links.last.href}" href="#">Last</a></li>
+        </ul>
+       </nav>
+       `)
         }
     });
+}
+
+$('#search-button').on('click', function (e) {
+    e.preventDefault(); // prevent form from submitting and refreshing the page
+
+    // Get the user input
+    const userInput = $("#search").val();
+    getEventData(`https://app.ticketmaster.com/discovery/v2/events?classificationName=music&size=6&apikey=${apiKey}&keyword=${userInput}`)
+
+    
 });
+
+$(document).on('click', '.page-link', function(e){
+    e.preventDefault();
+    const link_data = $(this).attr('data-href');
+    getEventData(`https://app.ticketmaster.com${link_data}&apikey=${apiKey}`)
+
+})
 
 function getJoke() {
     $.ajax({
