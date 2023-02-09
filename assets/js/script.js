@@ -73,18 +73,18 @@ $('#search-button').on('click', function (e) {
     // Get the user input
     const userInput = $("#search").val();
     getEventData(`https://app.ticketmaster.com/discovery/v2/events?classificationName=music&size=6&apikey=${apiKey}&keyword=${userInput}`)
-
-    
+    getJoke();
 });
 
 $(document).on('click', '.page-link', function(e){
     e.preventDefault();
     const link_data = $(this).attr('data-href');
     getEventData(`https://app.ticketmaster.com${link_data}&apikey=${apiKey}`)
-
+    getJoke()
 })
 
 function getJoke() {
+    $('#chuck').empty();
     $.ajax({
         url: 'https://api.chucknorris.io/jokes/random',
         type: 'GET',
@@ -96,7 +96,7 @@ function getJoke() {
             </div>
           </div>
         `;
-            $('body').append(card);
+            $('#chuck').append(card);
         },
         error: function () {
             console.error('Error retrieving joke');
