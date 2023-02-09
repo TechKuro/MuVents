@@ -28,13 +28,13 @@ function getEventData(url){
             }
 
             $('.event-row').append(`
-            <div class="col-md-6 col-sm-12">
-                <div class="card border-secondary mb-3" style="max-width: 420px;">
+            <div class="col-md-6 col-sm-12 mb-3">
+                <div class="card border-secondary" style="max-width: 480px; height: 100%;">
                     <div class="row no-gutters">
-                        <div class="col-md-5">
-                            <img style="height: 100%;" class="card-img" src="${eventImage}" alt="Event Image">
+                        <div class="col-sm-5">
+                            <img style="height: 100%; object-fit:cover;" class="card-img" src="${eventImage}" alt="Event Image">
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-sm-7">
                             <div class="card-body">
                                 <h5 class="card-title">${eventName}</h5>
                                 <p class="card-text">Date and Time: ${eventDate}, ${eventTime}</p>

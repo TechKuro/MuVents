@@ -4,11 +4,13 @@
     box-sizing: border-box;
 }
 
+
 #main{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
+    max-height: 600px;
     background-image: url(../images/header1.jpg);
     background-size: cover;
     background-repeat: no-repeat;
