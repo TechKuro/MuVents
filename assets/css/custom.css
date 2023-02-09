@@ -1,9 +1,10 @@
 .jumbotron {
     display: flex;
-    height: 800px;
+    height: 100vh;
     background-image: url(../images/header1.jpg);
     background-size: cover;
-    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .test1 {
@@ -31,7 +32,7 @@
 
 .card {
     display: flex;
-    justify-content: right;
-    width: 800px;
+    justify-content: center;
+    width: 800px !important;
     margin-left: 200px;
 }
