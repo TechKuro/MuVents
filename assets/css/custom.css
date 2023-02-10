@@ -1,11 +1,23 @@
-*, *::before, *::after{
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Lobster&family=Titillium+Web:wght@700&display=swap');
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+h1{
+    font-family: 'Titillium Web', sans-serif;
+    padding: 1rem;
+}
 
-#main{
+body{
+    font-family: 'Inconsolata', monospace;
+    font-size: 15px;
+}
+
+
+#main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -15,10 +27,32 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+.lead{
+    font-size: 15px;
+    font-family: 'Inconsolata', monospace;
+    padding: 1rem;
+}
 
-.bg-light{
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255);
+}
+
+.navbar-brand{
+    font-family: 'Lobster', cursive;
+    font-size: 24px;
+}
+
+.bg-light {
     background-color: transparent !important;
-    color: white 
+    color: white;
+   
+}
+
+.dropdown-menu{
+    background-color: transparent;
+}
+.dropdown-item{
+    color: rgba(255,255,255, 0.85);
 }
 
 .jumbotron {
@@ -28,12 +62,56 @@
     align-items: center;
 }
 
-#event-main{
+
+.height {
+    height: 70vh;
+}
+
+.search {
+    position: relative;
+    box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+    margin-bottom: 2rem;
+    font-family: 'Inconsolata', monospace;
+}
+
+.search input {
+    height: 60px;
+    text-indent: 25px;
+    border: 1px solid lightsalmon;
+}
+
+.btn-secondary {
+    color: #fff;
+    background-color: transparent;
+    border-color: lightsalmon;
+}
+
+.search input:focus {
+    box-shadow: none;
+    border: 2px solid lightcoral;
+}
+
+.search .fa-search {
+    position: absolute;
+    top: 20px;
+    left: 16px;
+}
+
+.search button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    height: 50px;
+    width: 110px;
+    background: lightsalmon
+}
+
+#event-main {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.card{
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+.card {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }

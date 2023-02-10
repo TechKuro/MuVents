@@ -6,8 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muvents</title>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
 </head>
 
@@ -16,10 +18,14 @@
     <div class="mb-3 container-fluid" id="main">
         <nav class="navbar navbar-dark bg-light">
             <a class="navbar-brand">Muvents</a>
-            <form class="form-inline">
-                <input id="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button id="search-button" class="btn btn-outline-success my-2 my-sm-0" type="submit">GO</button>
-            </form>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+                    aria-expanded="false">
+                    Search History
+                </button>
+                <div id="history" class="dropdown-menu">
+                </div>
+            </div>
         </nav>
         <!--- jumbotron --->
         <div class="jumbotron jumbotron-fluid text-white">
@@ -28,7 +34,15 @@
                 <!-- <hr style="color: white;" class="my-4"> -->
                 <p class="lead">This state of the art web application gives you access to upcoming music events near you
                     and around the globe.</p>
-                <a class="btn btn-primary" href="#" role="button">Learn More</a>
+                <div class="row height d-flex justify-content-center align-items-center">
+                    <div class="col-md-8">
+                        <div class="search">
+                            <span style="color: lightsalmon;"><i class="fa fa-search"></i></span>
+                            <input type="text" id="search" class="form-control" placeholder="Looking for an event?...">
+                            <button id="search-button" class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!---->
@@ -43,10 +57,13 @@
         </div>
     </div>
     <div class="container-fluid" id="chuck">
-        
+
     </div>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
     <script src="assets/js/script.js"></script>
 </body>
 

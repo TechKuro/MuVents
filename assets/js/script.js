@@ -1,5 +1,19 @@
 
 const apiKey = 'r8DA5FmL3xv8O9dO4K6WpafEvzCNG3Fv';
+// retreive history from local storage
+let history = JSON.parse(localStorage.getItem('history')) || [];
+
+
+function init(){
+    renderHistoryTags();
+    getJoke();
+}
+
+function clearContent(elementID) {
+    document.getElementById(elementID).innerHTML = "";
+}
+
+init();
 
 function getEventData(url){
     $('.event-row').empty();
@@ -56,23 +70,54 @@ function getEventData(url){
        $('#pagination-div').append(`
        <nav aria-label="Page navigation example">
         <ul class="pagination">
-            <li class="page-item"><a class="page-link" data-href="${response._links.first.href}" href="#">First</a></li>
+            <li class="page-item ${response._links.first ?"" : "disabled"}"><a class="page-link" data-href="${response._links.first ? response._links.first.href : ""}" href="#">First</a></li>
             <li class="page-item ${response._links.prev ?"" : "disabled"}"><a class="page-link" data-href="${response._links.prev ? response._links.prev.href : ""}" href="#">Previous</a></li>
             <li class="page-item ${response._links.next ?"" : "disabled"}"><a class="page-link" data-href="${response._links.next ? response._links.next.href : ""}" href="#">Next</a></li>
-            <li class="page-item"><a class="page-link" data-href="${response._links.last.href}" href="#">Last</a></li>
+            <li class="page-item ${response._links.last ?"" : "disabled"}"><a class="page-link" data-href="${response._links.last ? response._links.last.href : ""}" href="#">Last</a></li>
         </ul>
        </nav>
        `)
         }
     });
 }
+const clear = `<a href="#" id="clear" class="dropdown-item">Clear</a>`;
+// $("#history").append(clear);
+
+function renderHistoryTags() {
+    $("#history").empty();
+    // Loops through the array of history
+    for (var i = 0; i < history.length; i++) {
+        const search_history = $("<a>");
+        search_history.addClass("dropdown-item history-item");
+        search_history.attr("data-name", history[i]);
+        search_history.text(history[i]);
+        $("#history").append(search_history)
+    }
+
+    
+}
 
 $('#search-button').on('click', function (e) {
     e.preventDefault(); // prevent form from submitting and refreshing the page
 
     // Get the user input
-    const userInput = $("#search").val();
-    getEventData(`https://app.ticketmaster.com/discovery/v2/events?classificationName=music&size=6&apikey=${apiKey}&keyword=${userInput}`)
+    const userInput = $('#search').val().trim();
+    if (userInput === ""){
+        return;
+    }else{
+        if(!history.includes(userInput)){
+            history.push(userInput);
+            history.sort(function(element1, element2){
+                return history.indexOf(element2) - history.indexOf(element1);
+            })
+            if(history.length > 5){
+                history.pop();
+            }
+            localStorage.setItem('history', JSON.stringify(history));
+        }
+        getEventData(`https://app.ticketmaster.com/discovery/v2/events?classificationName=music&size=6&apikey=${apiKey}&keyword=${userInput}`); 
+    }
+    renderHistoryTags();
     getJoke();
 });
 
@@ -82,6 +127,22 @@ $(document).on('click', '.page-link', function(e){
     getEventData(`https://app.ticketmaster.com${link_data}&apikey=${apiKey}`)
     getJoke()
 })
+
+$(document).on('click', '.history-item', function(e){
+    e.preventDefault();
+    const searchHistory = $(this).attr('data-name');
+    getEventData(`https://app.ticketmaster.com/discovery/v2/events?classificationName=music&size=6&apikey=${apiKey}&keyword=${searchHistory}`);
+    getJoke()
+})
+
+// $('#clear').on('click', function (e) {
+//     e.preventDefault();
+//     localStorage.removeItem('history');
+//     history = [];
+//     clearContent('history');
+//     console.log(history);
+//     $("#history").append(clear);
+// })
 
 function getJoke() {
     $('#chuck').empty();
@@ -103,8 +164,3 @@ function getJoke() {
         }
     });
 }
-
-$(document).ready(function () {
-    getJoke();
-});
-
